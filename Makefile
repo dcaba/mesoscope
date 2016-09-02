@@ -1,5 +1,5 @@
-MESOS_VER=0.27.1
-MESOS_HELPER_URL=https://codeload.github.com/danigiri/mesos-build-helper/zip/$(MESOS_VER) 
+MESOS_VER=0.28.2
+MESOS_HELPER_URL=https://codeload.github.com/dcaba/mesos-build-helper/zip/$(MESOS_VER) 
 
 all: build compose
 
@@ -19,7 +19,7 @@ mesos-common/mesos-$(MESOS_VER)-1.x86_64.rpm:
 	cp -v tmp/mesos-build-helper-$(MESOS_VER)/mesos-$(MESOS_VER)-1.x86_64.rpm mesos-common
 
 build-mesos-common: build-common mesos-common/mesos-$(MESOS_VER)-1.x86_64.rpm
-	cd mesos-common && docker build -t mesoscope/mesos-common .
+	cd mesos-common && docker build --build-arg mesos_ver=$(MESOS_VER) -t mesoscope/mesos-common .
 
 build-mesos-master: build-mesos-common
 	cd mesos-master && docker build -t mesoscope/mesos-master .

@@ -2,7 +2,9 @@
 
 FROM mesoscope/common
 
-ENV MESOS_PACKAGE mesos-0.27.1-1.x86_64.rpm 
+ARG mesos_ver=0.28.2
+
+ENV MESOS_PACKAGE mesos-${mesos_ver}-1.x86_64.rpm 
 
 # following this http://mesos.apache.org/gettingstarted/
 RUN apt-get update && \
