@@ -1,4 +1,4 @@
-MESOS_VER=0.28.2
+export MESOS_VER=0.28.2
 MESOS_HELPER_URL=https://codeload.github.com/dcaba/mesos-build-helper/zip/$(MESOS_VER) 
 
 all: build compose
@@ -14,7 +14,7 @@ build-zookeeper: build-common
 
 mesos-common/mesos-$(MESOS_VER)-1.x86_64.rpm:
 	mkdir -p tmp && cd tmp && curl -s -S "$(MESOS_HELPER_URL)" -o mesos-build-helper-$(MESOS_VER).zip
-	unzip -q -u tmp/mesos-build-helper-$(MESOS_VER).zip -d tmp
+	unzip -q -o -u tmp/mesos-build-helper-$(MESOS_VER).zip -d tmp
 	DOCKER_FILE=Dockerfile-ubuntu cd tmp/mesos-build-helper-$(MESOS_VER) && ./script/build
 	cp -v tmp/mesos-build-helper-$(MESOS_VER)/mesos-$(MESOS_VER)-1.x86_64.rpm mesos-common
 
