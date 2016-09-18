@@ -1,5 +1,5 @@
 export MESOS_VER=0.28.2
-MESOS_HELPER_URL=https://codeload.github.com/dcaba/mesos-build-helper/zip/$(MESOS_VER) 
+MESOS_HELPER_URL=https://codeload.github.com/danigiri/mesos-build-helper/zip/$(MESOS_VER) 
 
 all: build compose
 
